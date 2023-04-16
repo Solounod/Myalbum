@@ -1,0 +1,17 @@
+{% extends "createuser/index.html" %}
+{% load static %}
+{% block contentalbum %}
+    <div class="container">
+        <div class="bg-light shadow">
+            <h3 class="m-3 pt-3">Mis albums</h3>
+                <div class="row row-cols-3">
+                {% for album in albums %}
+                    <div class="col">
+                        <img class="mx-auto d-block" src="{% static 'img/carpeta.png' %}">
+                        <a class="btn d-block" href="{% url 'displayphoto' album.id %}">{{ album.name_album }}</a>
+                    </div>
+                {% endfor %}
+                </div>
+        </div>
+    </div>
+{% endblock %}

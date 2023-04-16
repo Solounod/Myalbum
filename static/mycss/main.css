@@ -1,0 +1,38 @@
+.img-photo{
+    position: relative;
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    max-width: 250px;
+    max-height: 250px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.img-photo:hover{
+    transform: scale(1.07);
+}
+
+.zoom-img{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0,0, 0.9);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+}
+.zoom-img span{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+}
+.zoom-img img{
+    width: 90%;
+    max-width: 600px;
+}

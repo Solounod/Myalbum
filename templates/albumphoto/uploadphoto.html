@@ -1,0 +1,14 @@
+{% extends "createuser/base.html" %}
+
+{% block content %}
+<div class="container">
+        <div>
+            <h1 class="text-center">Created album</h1>
+        </div>
+    <form action="" enctype="multipart/form-data" method="POST">{% csrf_token %}
+
+        {{form.as_p}}
+        <button class="btn btn-success" type="submit">Enviar</button>
+    </form>
+</div>
+{% endblock %}

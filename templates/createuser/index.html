@@ -1,0 +1,27 @@
+{% extends "createuser/base.html" %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div><h1 class="text-center mt-3">Album de {{ user.username }}</h1></div>
+        <div class="d-flex justify-content-center pt-2">
+            <a class="btn btn-success m-1" href="{% url 'formalbum' %}" role="button" >Crear album</a>
+            <a class="btn btn-success m-1" href="{% url 'formphoto' %}" role="button" >Guardar fotografia</a>
+             <a class="btn btn-success m-1" href="{% url 'displayalbum' %}" role="button" >Ver mis albums</a>
+        </div>
+        
+            {% block contentalbum %}
+            {% endblock %}
+                   
+    {% else %}
+    <div class="mt-5 pt-2 ">
+        <div class="m-5">
+            <h1 class="text-center">My Album</h1>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <a class="btn btn-success" href="{% url 'login' %}" role="button">Login</a>
+            <a class="btn btn-success" href="{% url 'register' %}" role="button">Register</a>
+
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

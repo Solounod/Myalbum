@@ -1,0 +1,26 @@
+{% extends "createuser/base.html" %}
+
+{% block content %}
+    
+    <div class="container">
+    <div>
+        <h1 class="text-center">Login</h1>
+    </div>
+        <form action="" method="POST">{% csrf_token %}
+
+            <div>
+                {% if messages %}
+                <ul>
+                    {% for message in messages%}
+                    <li class="text-danger">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            {{form.as_p}}
+            <button class="btn btn-success" type="submit">Enviar</button>
+        </form>
+    </div>
+
+    
+{% endblock %}

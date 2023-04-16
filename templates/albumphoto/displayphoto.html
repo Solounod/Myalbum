@@ -1,0 +1,25 @@
+{% extends "createuser/index.html" %}
+
+{% block contentalbum %}
+    <h3 class="m-3 pt-3">Photos the album {{album.name_album}}</h3>
+    <div class="container">
+        <div class="row d-flex justify-content-center row-cols-4 shadow p-3">
+
+            <div class="zoom-img" id="zoomImgBox">
+                <img src="{{ photo.photo.url }}" id="zoomImg" alt="">
+                <span onclick="closeImg()">X</span>
+            </div>
+
+            {% for photo in photos %}
+                <div class="col">
+                    <img  src="{{ photo.photo.url }}" class="img-fluid img-thumbnail img-photo"  id="zoomImg" >
+                    <div class="d-flex justify-content-center mt-1">
+                        <a class="btn d-inline btn-danger" href="{% url 'delete_photo' photo.id %}">Eliminar</a>
+                        <a class="btn d-inline btn-success mx-1" href="{{ photo.photo.url }}" download>descargar</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+{% endblock %}
