@@ -13,7 +13,7 @@ class MyAlbumForm(ModelForm):
 
 class MyPhotoForm(ModelForm):
     album = forms.ModelChoiceField(label="Seleccionar album",widget=forms.Select(attrs={'class': 'form-control m-3'}),queryset=None)
-    photo = forms.ImageField(label="Seleccionar archivo de imagen",widget=forms.ClearableFileInput(attrs={'class': 'form-control m-3'}))
+    photo = forms.ImageField(label="Seleccionar archivo de imagen",widget=forms.ClearableFileInput(attrs={'class': 'form-control m-3', 'multiple': True}))
     
     class Meta:
         model = MyPhoto

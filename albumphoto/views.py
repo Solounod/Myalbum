@@ -1,3 +1,5 @@
+import os
+from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from .form import MyAlbumForm, MyPhotoForm
 from django.utils.decorators import method_decorator
@@ -7,6 +9,7 @@ from django.views.generic import View
 from django.contrib.auth.models import User
 from .models import Album, MyPhoto
 from django.urls import reverse_lazy
+from django.core.exceptions import PermissionDenied
 
 
 # Create your views here.
@@ -38,10 +41,16 @@ class UpLoadPhoto(View):
         #albums = Album.objects.filter(user=user_instance)
         form = MyPhotoForm(request.POST, request.FILES, user=user_instance)
         if form.is_valid():
-            form.save()
+            album = form.cleaned_data['album']
+            files = request.FILES.getlist('photo')
+
+            for f in files:
+                #saved images files, remplace form.save()
+                MyPhoto.objects.create(album=album, photo=f)
 
             return redirect('displayalbum')
-
+        else:
+            return render(request, 'albumphoto/uploadphoto.html', {"form": form})
 
 def display_album(request):
 
@@ -60,4 +69,10 @@ def display_photos(request, id):
 class DeletePhoto(DeleteView):
     model = MyPhoto
     success_url = reverse_lazy('displayalbum')
+
+    
+class DeleteAlbum(DeleteView):
+    model = Album
+    success_url = reverse_lazy('displayalbum')
+
 

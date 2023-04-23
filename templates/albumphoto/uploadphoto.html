@@ -10,5 +10,12 @@
         {{form.as_p}}
         <button class="btn btn-success" type="submit">Enviar</button>
     </form>
+    <div>
+    {% if form.album.errors %}
+        {% for error in form.album.errors %}
+                <span>{{ error }}</span>
+        {% endfor %}
+    {% endif %}
+    </div>
 </div>
 {% endblock %}

@@ -7,8 +7,11 @@
                 <div class="row row-cols-3">
                 {% for album in albums %}
                     <div class="col">
+                        <a class="btn d-block" >{{ album.name_album }}</a>
                         <img class="mx-auto d-block" src="{% static 'img/carpeta.png' %}">
-                        <a class="btn d-block" href="{% url 'displayphoto' album.id %}">{{ album.name_album }}</a>
+                        <a class="btn d-inline btn-success mx-1" href="{% url 'displayphoto' album.id %}">Ver</a>
+                        <a class="btn d-inline btn-danger" href="{% url 'delete_album' album.id %}">Eliminar</a>
+                        
                     </div>
                 {% endfor %}
                 </div>

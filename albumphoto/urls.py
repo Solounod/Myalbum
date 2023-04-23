@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import CreateAlbum, UpLoadPhoto, DeletePhoto ,display_album, display_photos
+from .views import CreateAlbum, UpLoadPhoto, DeletePhoto ,display_album, display_photos, DeleteAlbum
 
 
 
@@ -9,6 +9,7 @@ urlpatterns = [
     path('Home/albums/',display_album, name='displayalbum'),
     path('Home/photo/<int:id>',display_photos, name='displayphoto'),
     path('delete/<int:pk>',DeletePhoto.as_view(), name='delete_photo'),
+    path('deletealbum/<int:pk>',DeleteAlbum.as_view(), name='delete_album'),
     
     
 ]
