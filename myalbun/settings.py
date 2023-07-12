@@ -123,3 +123,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #Media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+#email
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+    EMAIL_FILE_PATH = os.path.join(BASE_DIR, "send_emails")
+else:
+    #enter email configuration in production
+    pass
